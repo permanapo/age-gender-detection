@@ -7,7 +7,7 @@ DATASET_TYPE = "gender"
 
 # define the base paths to the faces dataset and output path
 BASE_PATH = "../TugasAkhir/adience"
-OUTPUT_BASE = "output"
+OUTPUT_BASE = "../TugasAkhir/adience/output"
 MX_OUTPUT = BASE_PATH
 
 
@@ -46,6 +46,9 @@ if DATASET_TYPE == "age":
 
     # derive the path to the mean pixel file
     DATASET_MEAN = path.sep.join([OUTPUT_BASE, "age_adience_mean.json"])
+
+
+
 elif DATASET_TYPE == "gender":
     # define the number of labels for the "gender" dataset, along
     # with the path to the label encoder
