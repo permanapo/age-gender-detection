@@ -1,8 +1,10 @@
 # import the necessary packages
+from pyimagesearch.utils.agegenderhelper import AgeGenderHelper
 from config import age_gender_config as config
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from pyimagesearch.utils import AgeGenderHelper
+# from pyimagesearch.utils import AgeGenderHelper
+from pyimagesearch.utils.agegenderhelper import AgeGenderHelper
 import numpy as np
 import progressbar
 import pickle
