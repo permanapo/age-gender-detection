@@ -16,11 +16,13 @@ import cv2
 print("[INFO] building paths and labels...")
 agh = AgeGenderHelper(config)
 (trainPaths, trainLabels) = agh.buildPathsAndLabels()
+# print("isi",agh.buildPathsAndLabels())
 
 # now that we have the total number of images in the dataset that
 # can be used for training, compute the number of images that
 # should be used for validation and testing
 numVal = int(len(trainPaths) * config.NUM_VAL_IMAGES)
+# print(numVal)
 numTest = int(len(trainPaths) * config.NUM_TEST_IMAGES)
 
 # our class labels are represented as strings so we need to encode
@@ -32,15 +34,13 @@ trainLabels = le.transform(trainLabels)
 # perform sampling from the training set to construct a a validation
 # set
 print("[INFO] constructing validation data...")
-split = train_test_split(trainPaths, trainLabels, test_size=numVal,
-stratify=trainLabels)
+split = train_test_split(trainPaths, trainLabels, test_size=numVal, stratify=trainLabels)
 (trainPaths, valPaths, trainLabels, valLabels) = split
 
 # perform stratified sampling from the training set to construct a
 # a testing set
 print("[INFO] constructing testing data...")
-split = train_test_split(trainPaths, trainLabels, test_size=numTest,
-stratify=trainLabels)
+split = train_test_split(trainPaths, trainLabels, test_size=numTest, stratify=trainLabels)
 (trainPaths, testPaths, trainLabels, testLabels) = split
 
 # construct a list pairing the training, validation, and testing

@@ -43,8 +43,8 @@ class AgeGenderHelper:
                 label = "{}_{}".format(lower, upper)
                 break   
 
-            # return the label
-            return label
+        # return the label
+        return label
 
     def toGenderLabel(self, gender):
         # return 0 if the gender is male, 1 if the gender is female
@@ -102,32 +102,32 @@ class AgeGenderHelper:
             rows = open(foldPath).read()        
             rows = rows.strip().split("\n")[1:]   
 
-        # loop over the rows
-        for row in rows:
-            # unpack the needed components of the row
-            row = row.split("\t")
-            (userID, imagePath, faceID, age, gender) = row[:5]  
+            # loop over the rows
+            for row in rows:
+                # unpack the needed components of the row
+                row = row.split("\t")
+                (userID, imagePath, faceID, age, gender) = row[:5]  
 
-            # if the age or gender is invalid, ignore the sample
-            if age[0] != "(" or gender not in ("m", "f"):
-                continue
+                # if the age or gender is invalid, ignore the sample
+                if age[0] != "(" or gender not in ("m", "f"):
+                    continue
 
-            # construct the path to the input image and build
-            # the class label
-            p = "landmark_aligned_face.{}.{}".format(faceID,
-            imagePath)
-            p = os.path.sep.join([self.config.IMAGES_PATH,
-            userID, p])
-            label = self.toLabel(age, gender)
+                # construct the path to the input image and build
+                # the class label
+                p = "landmark_aligned_face.{}.{}".format(faceID,
+                imagePath)
+                p = os.path.sep.join([self.config.IMAGES_PATH,
+                userID, p])
+                label = self.toLabel(age, gender)
 
-            # if the label is None, then the age does not fit
-            # into our age brackets, ignore the sample
-            if label is None:
-                continue      
+                # if the label is None, then the age does not fit
+                # into our age brackets, ignore the sample
+                if label is None:
+                    continue      
 
-            # update the respective image paths and labels lists
-            paths.append(p)
-            labels.append(label)  
+                # update the respective image paths and labels lists
+                paths.append(p)
+                labels.append(label)  
 
         # return a tuple of image paths and labels
         return (paths, labels)

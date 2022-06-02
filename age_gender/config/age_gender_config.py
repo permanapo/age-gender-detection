@@ -3,7 +3,7 @@ from os import path
 import os
 
 # define the type of dataset we are training (i.e., either "age" or # "gender")
-DATASET_TYPE = "gender"
+DATASET_TYPE = "age"
 
 # define the base paths to the faces dataset and output path
 BASE_PATH = "../TugasAkhir/adience"
